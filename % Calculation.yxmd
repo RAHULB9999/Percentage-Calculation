@@ -1,0 +1,361 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2021.4">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Data Summary.xlsx
+Query=`Sheet1$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="CATEGORY" size="255" source="File: C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="COMP A_001" source="File: C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="COMP A_002" source="File: C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="COMP A_003" source="File: C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="COMP A_004" source="File: C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="COMP A_005" source="File: C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="COMP A_TOTAL" source="File: C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="COMP B_001" source="File: C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="COMP B_002" source="File: C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="COMP B_003" source="File: C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="COMP B_004" source="File: C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="COMP B_005" source="File: C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="COMP B_TOTAL" source="File: C:\Users\91970\Desktop\Alteryx Projects\Sub-total\Data Summary.xlsx|||`Sheet1$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings>
+        <Position x="150" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Ranges">1</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings Macro="SelectRecords.yxmc" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Transpose.Transpose">
+        <Position x="246" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ErrorWarn>Warn</ErrorWarn>
+          <KeyFields />
+          <DataFields>
+            <Field field="CATEGORY" selected="True" />
+            <Field field="COMP A_001" selected="True" />
+            <Field field="COMP A_002" selected="True" />
+            <Field field="COMP A_003" selected="True" />
+            <Field field="COMP A_004" selected="True" />
+            <Field field="COMP A_005" selected="True" />
+            <Field field="COMP A_TOTAL" selected="True" />
+            <Field field="COMP B_001" selected="True" />
+            <Field field="COMP B_002" selected="True" />
+            <Field field="COMP B_003" selected="True" />
+            <Field field="COMP B_004" selected="True" />
+            <Field field="COMP B_005" selected="True" />
+            <Field field="COMP B_TOTAL" selected="True" />
+            <Field field="*Unknown" selected="True" />
+          </DataFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTranspose" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="150" y="126" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>Contains([CATEGORY],"401k") or
+Contains([CATEGORY],"Def Comp ER") or
+Contains([CATEGORY],"FICA") or
+Contains([CATEGORY],"FUTA") or
+Contains([CATEGORY],"HGB") or
+Contains([CATEGORY],"Pension") or
+Contains([CATEGORY],"SBCC")</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Contains([CATEGORY],"401k") or
+Contains([CATEGORY],"Def Comp ER") or
+Contains([C...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Transpose.Transpose">
+        <Position x="246" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ErrorWarn>Warn</ErrorWarn>
+          <KeyFields>
+            <Field field="CATEGORY" />
+          </KeyFields>
+          <DataFields>
+            <Field field="CATEGORY" selected="False" />
+            <Field field="COMP A_001" selected="True" />
+            <Field field="COMP A_002" selected="True" />
+            <Field field="COMP A_003" selected="True" />
+            <Field field="COMP A_004" selected="True" />
+            <Field field="COMP A_005" selected="True" />
+            <Field field="COMP A_TOTAL" selected="True" />
+            <Field field="COMP B_001" selected="True" />
+            <Field field="COMP B_002" selected="True" />
+            <Field field="COMP B_003" selected="True" />
+            <Field field="COMP B_004" selected="True" />
+            <Field field="COMP B_005" selected="True" />
+            <Field field="COMP B_TOTAL" selected="True" />
+            <Field field="*Unknown" selected="True" />
+          </DataFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTranspose" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="366" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="Name" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="Name" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Right_Name" selected="False" rename="Right_Name" input="Right_" />
+                <SelectField field="Right_Value" selected="True" rename="Right_Value" input="Right_" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="450" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="Replace([CATEGORY],&quot;ER Match&quot;,&quot;&quot;)+&quot;% of payroll&quot;" field="Row %" size="1073741823" type="V_WString" />
+            <FormulaField expression="Tostring(([Right_Value]/ToNumber([Value]))*&#xA;100,2)+&quot; %&quot;" field="Values %" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Row % = Replace([CATEGORY],"ER Match","")+"% of payroll"
+Values % = Tostring(([R...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
+        <Position x="558" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <GroupFields>
+            <Field field="Row %" />
+          </GroupFields>
+          <HeaderField field="Name" />
+          <DataField field="Values %" />
+          <Methods>
+            <Method method="First" />
+            <Separator>,</Separator>
+            <FieldSize value="2048" />
+          </Methods>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Row %" size="1073741823" source="CrossTab:Group:First:" type="V_WString" />
+            <Field name="COMP_A_001" size="1073741823" source="Formula: Tostring(([Right_Value]/ToNumber([Value]))*&#xA;100,2)+&quot; %&quot;" type="V_WString" />
+            <Field name="COMP_A_002" size="1073741823" source="Formula: Tostring(([Right_Value]/ToNumber([Value]))*&#xA;100,2)+&quot; %&quot;" type="V_WString" />
+            <Field name="COMP_A_003" size="1073741823" source="Formula: Tostring(([Right_Value]/ToNumber([Value]))*&#xA;100,2)+&quot; %&quot;" type="V_WString" />
+            <Field name="COMP_A_004" size="1073741823" source="Formula: Tostring(([Right_Value]/ToNumber([Value]))*&#xA;100,2)+&quot; %&quot;" type="V_WString" />
+            <Field name="COMP_A_005" size="1073741823" source="Formula: Tostring(([Right_Value]/ToNumber([Value]))*&#xA;100,2)+&quot; %&quot;" type="V_WString" />
+            <Field name="COMP_A_TOTAL" size="1073741823" source="Formula: Tostring(([Right_Value]/ToNumber([Value]))*&#xA;100,2)+&quot; %&quot;" type="V_WString" />
+            <Field name="COMP_B_001" size="1073741823" source="Formula: Tostring(([Right_Value]/ToNumber([Value]))*&#xA;100,2)+&quot; %&quot;" type="V_WString" />
+            <Field name="COMP_B_002" size="1073741823" source="Formula: Tostring(([Right_Value]/ToNumber([Value]))*&#xA;100,2)+&quot; %&quot;" type="V_WString" />
+            <Field name="COMP_B_003" size="1073741823" source="Formula: Tostring(([Right_Value]/ToNumber([Value]))*&#xA;100,2)+&quot; %&quot;" type="V_WString" />
+            <Field name="COMP_B_004" size="1073741823" source="Formula: Tostring(([Right_Value]/ToNumber([Value]))*&#xA;100,2)+&quot; %&quot;" type="V_WString" />
+            <Field name="COMP_B_005" size="1073741823" source="Formula: Tostring(([Right_Value]/ToNumber([Value]))*&#xA;100,2)+&quot; %&quot;" type="V_WString" />
+            <Field name="COMP_B_TOTAL" size="1073741823" source="Formula: Tostring(([Right_Value]/ToNumber([Value]))*&#xA;100,2)+&quot; %&quot;" type="V_WString" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="Row %" order="Asc" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
+    </Node>
+    <Node ToolID="10">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+        <Position x="678" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ByName_ErrorMode>Warning</ByName_ErrorMode>
+          <ByName_OutputMode>All</ByName_OutputMode>
+          <Mode>ByPos</Mode>
+          <SetOutputOrder value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="9" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="6" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="6" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="True" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Join" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>% Calculation</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="a3c33dcc-1e33-48da-9f18-c6a390cce6ca" />
+      <Telemetry>
+        <PreviousWorkflowId value="5a239fe1-0e53-4ca2-944c-a403ac533b44" />
+        <OriginWorkflowId value="5a239fe1-0e53-4ca2-944c-a403ac533b44" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
